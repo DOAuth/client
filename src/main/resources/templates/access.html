@@ -1,0 +1,23 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <head th:replace="fragments/header :: header">
+            <title>Client</title>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        </head>
+    </head>
+    <body>
+        <div th:replace="fragments/bodyHeader :: bodyHeader" />
+
+        <div class="container">
+            <h4>Check Protected Resources to request access from Resource Server</h4>
+            <form th:action="@{/authorize}" th:object="${scope}" method="post">
+                <div th:each="key: *{keySet()}">
+                    <input type="checkbox" th:name="${key}" th:id="${key}" th:value="${key}">
+                    <label th:for="${key}" th:text="${scope.get(key)}">Scope1</label><br>
+                </div>
+                <input type="submit" value="Submit">
+            </form>
+        </div>
+    </body>
+</html>
