@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <head th:replace="fragments/header :: header">
+            <title>Client</title>
+            <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+        </head>
+    </head>
+    <body>
+        <div th:replace="fragments/bodyHeader :: bodyHeader" />
+        <div class="container">
+            <h4>Sign the document</h4>
+            <form th:action="@{/authorize}" method="post">
+                <label for="document_uri">Document URL:</label>
+                <div class="form-group">
+                    <input type="url" class="form-control" name="document_uri" id="document_uri" placeholder="https://example.com" pattern="https?://.+"  required>
+                </div>
+                <div class="form-group">
+                    <input type="hidden" class="form-control" id="scope1" name="scope1" value="signature">
+                </div>
+                <div class="form-group">
+                    <input type="hidden" class="form-control" id="scope2" name="scope2" value="document">
+                </div>
+                <button type="submit" class="btn btn-primary">Request</button>
+            </form>
+        </div>
+    </body>
+</html>
